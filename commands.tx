@@ -1,0 +1,2 @@
+from django.contrib.auth.models import User #Drop superuser
+User.objects.get(username="joebloggs", is_superuser=True).delete() #Drop superuser
