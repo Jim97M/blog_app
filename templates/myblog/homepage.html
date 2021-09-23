@@ -5,8 +5,9 @@
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
  </head>
  <body> 
-   {% for post in posts%} 
+   {% for post in posts %} 
       <a href={{post.get_absolute_url}}>{{post|linebreaks}}</a>
    {% endfor %}
+   {% include  "myblog/pagination.html" with page=posts %}
  </body>
 </html>

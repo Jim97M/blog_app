@@ -6,9 +6,10 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 # Create your views here.
 
 def post_list(request):
+    #Grab all objects or filter
     all_posts = Post.objects.all()
     paginator = Paginator(all_posts, 1)
-    page - request.GET.get('page')
+    page = request.GET.get('page')
     try:
         posts = paginator.page(page)
     except PageNotAnInteger:
