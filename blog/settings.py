@@ -27,7 +27,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+EMAIL_HOST ='smtp.gmail.com'
+EMAIL_PORT =587
+EMAIL_HOST_USER ='wabuyajames@gmail.com'
+EMAIL__HOST_PASSWORD = "07Masika.."
+EMAIL_USE_TLS = True
 # Application definition
 
 INSTALLED_APPS = [
