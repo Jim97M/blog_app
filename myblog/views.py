@@ -3,7 +3,8 @@ from django.http import HttpResponse, HttpResponseRedirect
 from .models import Post
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .forms import EmailForm
-
+from django.core.mail import send_mail
+from django.conf import settings
 # Create your views here.
 def post_list(request):
     all_posts = Post.objects.all()
@@ -31,6 +32,13 @@ def post_detail(request,pk):
             to = cd['to']
             message = cd['comment']
             subject = f"Shared post by{name}"
+            senders_email = settings.EMAIL_HOST_USER
+            send_mail(
+                subject,
+                message,
+                senders_email,
+                [to]
+            )
         return HttpResponseRedirect(reverse('myblog:detailview', args=[pk]))
     return render(request, "myblog/detail.html", 
            {'post':post,
