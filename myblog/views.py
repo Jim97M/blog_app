@@ -1,6 +1,6 @@
 from django.shortcuts import render, reverse
 from django.http import HttpResponse, HttpResponseRedirect
-from .models import Post
+from .models import Comment, Post
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .forms import EmailForm
 from django.core.mail import send_mail
@@ -22,6 +22,8 @@ def post_list(request):
 def post_detail(request,pk):
     post = Post.objects.get(pk=pk)
     emailform = EmailForm()
+    comments = Comment.objects.filter(post=post)
+    post_tags = Post.tags.all()
     if request.method == 'POST':
         print(request.POST)
         emailform = EmailForm(request.POST)

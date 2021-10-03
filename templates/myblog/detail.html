@@ -1,3 +1,4 @@
+{% load blog_post %}
 <!DOCTYPE html>
 <html>
   <head>
@@ -5,10 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   <body>
+  {% total_post %}
   {{post.title}}<br>
   {{post.body}}<br>
   {{post.status}}<br>
   {{post.author}}<br>
+  {{post.tags.all}}
 
   <form action="" method="post">
     {% csrf_token %} 
