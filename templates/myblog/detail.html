@@ -13,10 +13,14 @@
   {{post.author}}<br>
   {{post.tags.all}}
 
-  <form action="" method="post">
-    {% csrf_token %} 
+
+<h3> Similar Post </h3>
+{% for post in similar_posts %}
+<a href="{{post.get_absolute_url}}" > {% csrf_token %} </a>
       {{emailform.as_p}}
       <input type="submit" value="Send Email"> 
+      <h3>Comment</h3>
   </form>
+  <a href="{% url "myblog:commentview" post.pk %}">Write a comment</a>
   </body>
 </html>
