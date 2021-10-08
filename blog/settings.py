@@ -34,6 +34,8 @@ EMAIL_HOST_USER ='wabuyajames@gmail.com'
 # EMAIL_USE_TLS = True
 # Application definition
 
+SITE_ID = 1
+
 #Email Backends
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackends' 
 
@@ -45,7 +47,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'myblog.apps.MyblogConfig',
-    'taggit'
+    'taggit',
+    'django.contrib.sites',
+    'django.contrib.sitemaps'
 ]
 
 MIDDLEWARE = [
