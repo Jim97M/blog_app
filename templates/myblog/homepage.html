@@ -6,7 +6,13 @@
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
  </head>
  <body> 
+  
    <h3> Total Post - {% total_post %} </h3>
+   <form action="{%url 'myblog:search'%}" method="post"> 
+    {% csrf_token %}
+      <input type="text" name="Search data">
+      <input type="submit" value="Search" >
+   </form>
    {% for post in posts %} 
       <a href="{{ post.get_absolute_url }}">{{post|linebreaks}}</a>
    {% endfor %}

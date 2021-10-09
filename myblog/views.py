@@ -140,3 +140,13 @@ def comment_view(request, pk):
             new_comment.save()
         return HttpResponseRedirect(reverse('myapp:detailview', args=[pk]))
     return render(request, 'myblog/comment.html', {'commentform':commentform})
+
+def search(request):
+    print(request.POST)
+    search_data = request.POST.get('search_data', None)
+    if not search_data :
+       search_data = ""
+    qd = Post.objects.filter(status='published', body__contains = search_data)
+    return render(request, 'myblog/search.html', {
+        'posts': qd
+    })

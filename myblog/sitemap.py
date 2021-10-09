@@ -8,6 +8,6 @@ class PostSitemap(Sitemap):
         return Post.objects.filter(status='published')
 
     def lastmod(self, obj):
-        return obj.updated()
-
+        return obj.updated
+    
         
